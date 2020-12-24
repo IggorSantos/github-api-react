@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import './index.css'
 
 function App() {
   const [users,setUsers] = useState([])
@@ -23,14 +24,23 @@ function App() {
 
 
   return (
-    <div>
-    <input type="text" onChange={event => setInput(event.target.value)} />
-    <button type="submit" onClick={() => setSearch(input)} >
-      Pesquisar
-    </button>
-{users.login}
-
+    <div id="container">
+     <main>
+      <input type="text" placeHolder="Pesquise um usuario" onChange={event => setInput(event.target.value)} />
+      <button type="submit" onClick={() => setSearch(input)} >
+       Pesquisar
+      </button>
+    </main>
+    <div id="content">
+  
+    <img src={users.avatar_url} alt="Foto do Perfil" />
+    <div className="content-bio">
+      {users.bio}
     </div>
+    </div>
+  </div>
+
+
   );
 }
 
