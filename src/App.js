@@ -15,6 +15,9 @@ function App() {
           return Promise.reject("User not found")
         }
       })
+      if(!response){
+        console.log("Usuario não encontrado")
+      }
       setUsers(response)
       console.log(users)
 
@@ -26,14 +29,14 @@ function App() {
   return (
     <div id="container">
      <main>
-      <input type="text" placeHolder="Pesquise um usuario" onChange={event => setInput(event.target.value)} />
+      <input type="text" placeholder="Pesquise um usuario" onChange={event => setInput(event.target.value)} />
       <button type="submit" onClick={() => setSearch(input)} >
        Pesquisar
       </button>
     </main>
     <div id="content">
-  
-    <img src={users.avatar_url} alt="Foto do Perfil" />
+
+    <img src={users.avatar_url ? users.avatar_url : "https://via.placeholder.com/150/771796"} alt="Foto do Perfil" />
     <div className="content-bio">
       {users.bio}
     </div>
